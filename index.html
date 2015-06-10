@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <title>dof</title>
+    <link rel="stylesheet" href="dof.css">
+    <script src="dof.js"></script>
+  </head>
+  <body>
+    <div id="results">
+      <div id="hf_label">H &cong;</div>
+      <div id="hf_result">
+        ...
+      </div>
+      <div id="dof_result">
+        <div id="dof_dist">
+          6.248m (6.248m) 12.5m (inf) inf
+        </div>
+        <div id="dof_range">
+          6.248m --+-- inf
+        </div>
+      </div>
+    </div>
+
+    <div id="spacer"></div>
+
+    <div id="params">
+      Distance: <input class="dofinput" name="distance" value="" size="5" style="text-align: right"/>m
+      <br/>
+      1:<input class="dofinput" id="aperture_input" name="aperture" value="8" size="4"/>
+      f=<input class="dofinput" name="focal_length" value="50" size="4" style="text-align: right"/>mm
+      <br/>
+      <div id="format-param">
+        Format: <select class="dofselect dofinput" name="format">
+          <option value="add">Add ...</option>
+          <option value="apsc">APS-C</option>
+          <option value="35mm">35mm</option>
+          <option value="mf645">Medium Format 645</option>
+          <option value="mf66">Medium Format 6x6</option>
+          <option value="mf67">Medium Format 6x7</option>
+          <option value="mf69">Medium Format 6x9</option>
+          <option value="mf612">Medium Format 6x12</option>
+          <option value="mf617">Medium Format 6x17</option>
+          <option value="4x5">Large Format 4x5</option>
+          <option value="5x7">Large Format 5x7</option>
+          <option value="8x10">Large Format 8x10</option>
+        </select>
+      </div>
+      <div id="add-format">
+        New format:
+        <input class="addinput" name="name" size="8">
+        <input class="addinput" name="dim1" size="4" style="text-align: right"> X
+        <input class="addinput" name="dim2" size="4" style="text-align: right">mm
+        <button class="addinput" id="add-format-btn">+</button>
+        <button class="addinput" id="cancel-add-format-btn">-</button>
+      </div>
+      <div id="coc">
+        CoC:
+        <span id="diagonal"></span> /
+	<select name="denominator">
+	  <option>1730</option>
+	  <option>1500</option>
+	</select>
+	= <span id="acoc"></span>
+      </div>
+    </div>
+  </div>
+
+    <div id="spacer"></div>
+
+    <div id="help">
+      <div class="topic" id="intro">
+        <div class="topic-label">Depth of Field Calculator</div>
+        <div class="topic-content">
+	  <p>This is a depth of field calculator intended for use in photography.</p>
+	  <p>It is implemented in javascript so once you have loaded it in your browser
+	    it operates locally and does not need a network.</p>
+	  <p>It is really just a learning exercise / proof of concept that got a bit carried away.
+	    It may well be flawed, and if it is, I'm sorry.</p>
+	  <p>It has some handy keyboard shortcuts, but it really aught to work nicely on touch
+	    interfaces, which it doesn't. Maybe another day ...</p>
+        </div>
+      </div>
+
+      <div class="topic" id="results-section">
+        <div class="topic-label">Results</div>
+        <div class="topic-content">
+	  <p>The results show in the top section. They update automatically whenever a parameter is changed.</p>
+
+	  <p>The value after 'H &cong;' is the hyperfocal distance. This is a function of the parameters
+	  entered below and is the basis for calculating the depth of field. The hyperfocal distance
+	  is the nearest focus distance that includes infinity in the depth of field.</p>
+
+	  <p>The second row shows the depth of field as follows:</p>
+
+	    <blockquote>near limit -- subject distance -- far limit</blockquote>
+
+	  <p>The third row shows the near and far depth of field ranges
+	     - the distance from the subject to the limits, as follows:</p>
+
+	    <blockquote>near range --+-- far range</blockquote>
+	  
+	  <p>Distances are shown in metres, or millimetres for distances less than one metre.</p>
+
+        </div>
+      </div>
+
+      <div class="topic" id="parameters-section">
+        <div class="topic-label">Parameters</div>
+        <div class="topic-content">
+	  <p>All of the parameters required to calculate depth of field are entered in the second section.</p>
+        </div>
+      </div>
+
+      <div class="topic" id="navigation">
+        <div class="topic-label">Navigation</div>
+        <div class="topic-content">
+	  <p>Use the Return key to cycle through the inputs.</p>
+        </div>
+      </div>
+
+      <div class="topic" id="distance">
+        <div class="topic-label">Distance</div>
+        <div class="topic-content">
+          <p>Distance to subject in metres. Defaults to hyperfocal distance.
+          The minimum distance for which the depth of field will be calculated is twice the focal length.</p>
+        </div>
+      </div>
+
+      <div class="topic" id="aperture">
+        <div class="topic-label">Aperture</div>
+        <div class="topic-content">
+	  <p>Enter the aperture F-number in the text input after '1:'.</p>
+	  <p>When the aperture input has focus, use the Up and Down arrow keys to jump in full stops.
+	  Hold down the Shift key to jump in half stops.
+	  Hold down the Alt key to jump in third stops.</p>
+        </div>
+      </div>
+
+      <div class="topic" id="focal-length">
+        <div class="topic-label">Focal Length</div>
+        <div class="topic-content">
+	  <p>Enter the focal length in millimetres in the text input after 'f='.</p>
+	  <p>When the focal length input has focus, use the Up and Down arrow keys to jump
+	  in common focal lengths.</p>
+        </div>
+      </div>
+
+      <div class="topic" id="format">
+        <div class="topic-label">Format</div>
+        <div class="topic-content">
+	  <p>Select the film format from the dropdown.</p>
+	  <p>If the required format is not in the list, then select 'Add ...'.
+	    Enter a name and the two dimensions in millimetres for the new format.
+	    Then either hit 'Return' or click the '+' button to add the new format.</p>
+	  <p>If the new name is not unique or if either of the dimensions is not a number,
+	    the 'Return' key and the '+' button will be disabled.</p>
+	  <p>To cancel adding and return to the list, click the '-' button.</p>
+        </div>
+      </div>
+
+      <div class="topic" id="circle-of-confusion">
+        <div class="topic-label">Circle of Confusion</div>
+        <div class="topic-content">
+	  <p>Circle of Confusion information is shown below the 'Format' selector as follows:</p>
+	  <blockquote>CoC: diagonal / denominator = circle of confusion</blockquote>
+	  <p>The diagonal is calculated from the dimensions of the frame size of the selected format.</p>
+	  <p>The denominator is a selector with commonly used values.</p>
+	  <p>The circle of confusion is the value used in the calculation for the hyperfocal distance.</p>
+        </div>
+      </div>
+
+      <div class="topic" id="about">
+        <div class="topic-label">About</div>
+        <div class="topic-content">
+	  <p>This was developed in June 2015 by someone wanting to better understand how depth of field
+	    works. All of the technical details were gleaned from these two Wikipedia pages:</p>
+
+	  <p><a href="http://en.m.wikipedia.org/wiki/Depth_of_field">
+	      http://en.m.wikipedia.org/wiki/Depth_of_field</a></p>
+	  <p><a href="http://en.m.wikipedia.org/wiki/Circle_of_confusion">
+	      http://en.m.wikipedia.org/wiki/Circle_of_confusion</a></p>
+
+	  <p>All errors are mine. This is provided in a spirit of sharing. Use at your own risk!</p>
+
+	  <p>If you wish to comment or question, you may have luck tickling
+	    <a href="https://twitter.com/AdderFull">@AdderFull</a>
+	  <p>&copy; 2015 James Bullen</p>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,108 @@
+#results {
+    font-family: sans-serif;
+    max-width: 640px;
+    min-width: 360px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: Black;
+    border-radius: 6px;
+    padding: 6px;
+    background: DimGray;
+    color: White;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#dof_range {
+    font-size: x-large;
+}
+
+#params {
+    font-family: sans-serif;
+    max-width: 640px;
+    min-width: 360px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: Black;
+    border-radius: 6px;
+    padding: 6px;
+    background: DimGray;
+    color: White;
+    text-align: center;
+    font-size: x-large;
+}
+
+#help {
+    font-family: sans-serif;
+    max-width: 640px;
+    min-width: 360px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: Black;
+    border-radius: 6px;
+    padding: 6px;
+    background: DimGray;
+    color: White;
+    font-size: large;
+}
+
+.topic-label {
+    font-size: x-large;
+}
+
+.topic-content {
+    padding-left: 60px;
+}
+
+.topic {
+    padding: 6px;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: Light-Gray;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+
+#spacer {
+    height: 6px;
+}
+
+.dofinput {
+    font-size: x-large;
+    background: Gray;
+    color: White;
+}
+
+.addinput {
+    font-size: medium;
+    background: Gray;
+    color: White;
+}
+
+select[name=format] {
+    font-size: large;
+}
+
+#hf_label {
+    display: inline-block;
+}
+
+#hf_result {
+    display: inline-block;
+}
+
+#add-format {
+    display: none;
+    font-size: medium;
+}
+
+select[name=denominator] {
+    font-size: small;
+    background: Gray;
+    color: White;
+}
+
+#coc {
+    font-size: small;
+}
+
