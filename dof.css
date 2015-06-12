@@ -66,7 +66,7 @@ div.section {
 }
 
 select[name=format] {
-    font-size: 1em;
+    font-size: 0.8em;
 }
 
 #hf_label {
@@ -92,3 +92,6 @@ select[name=denominator] {
     font-size: 0.67em;
 }
 
+.param-section {
+    margin-bottom: 6px;
+}
