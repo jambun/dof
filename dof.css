@@ -1,5 +1,9 @@
-#results {
-    font-family: sans-serif;
+body {
+    font-family: Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+div.section {
     max-width: 640px;
     min-width: 360px;
     border-style: solid;
@@ -9,6 +13,9 @@
     padding: 6px;
     background: DimGray;
     color: White;
+}
+
+#results {
     text-align: center;
     font-size: xx-large;
 }
@@ -18,31 +25,11 @@
 }
 
 #params {
-    font-family: sans-serif;
-    max-width: 640px;
-    min-width: 360px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: Black;
-    border-radius: 6px;
-    padding: 6px;
-    background: DimGray;
-    color: White;
     text-align: center;
     font-size: x-large;
 }
 
 #help {
-    font-family: sans-serif;
-    max-width: 640px;
-    min-width: 360px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: Black;
-    border-radius: 6px;
-    padding: 6px;
-    background: DimGray;
-    color: White;
     font-size: large;
 }
 
