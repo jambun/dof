@@ -44,6 +44,7 @@ div.section {
 #params {
     text-align: center;
     font-size: 1.5em;
+    position: relative;
 }
 
 .topic {
@@ -65,7 +66,7 @@ div.section {
     margin-left: 60px;
 }
 
-#spacer {
+.spacer {
     height: 6px;
 }
 
@@ -117,7 +118,6 @@ select[name=denominator] {
 }
 
 .param-section {
-    margin-bottom: 6px;
 }
 
 #help {
@@ -125,8 +125,9 @@ select[name=denominator] {
 }
 
 #help-btn {
-    display: inline;
-    float: right;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
     font-size: 0.8em;
     border-style: dashed;
     border-color: LightGray;
