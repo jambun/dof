@@ -50,7 +50,7 @@ div.section {
     padding: 6px;
     border-style: dashed;
     border-width: 1px;
-    border-color: Light-Gray;
+    border-color: LightGray;
     border-radius: 6px;
     margin-bottom: 6px;
 }
@@ -118,4 +118,22 @@ select[name=denominator] {
 
 .param-section {
     margin-bottom: 6px;
+}
+
+#help {
+    display: none;
+}
+
+#help-btn {
+    display: inline;
+    float: right;
+    font-size: 0.8em;
+    border-style: dashed;
+    border-color: LightGray;
+    border-width: 1px;
+    border-radius: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
 }

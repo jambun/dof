@@ -98,6 +98,15 @@ DepthOfFieldCalculator.prototype.init = function() {
 	self.calculate();
     }
 
+    document.getElementById("help-btn").onclick = function() {
+	var help = document.getElementById("help");
+	if (help.style.display == "block") {
+	    help.style.display = "none";
+	} else {
+	    help.style.display = "block";
+	}
+    }
+
     var topic_label = document.querySelectorAll(".topic-label");
     for (var i = 0; i < topic_label.length; i++) {
 	topic_label[i].onclick = function(e) {
