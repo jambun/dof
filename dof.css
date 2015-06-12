@@ -4,6 +4,14 @@ body {
     font-size: 100%;
 }
 
+a:link {
+    color: #aaaaff;
+}
+
+a:visited {
+    color: #ffaaff;
+}
+
 div.section {
     max-width: 640px;
     min-width: 360px;
