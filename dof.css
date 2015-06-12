@@ -12,6 +12,14 @@ a:visited {
     color: #ffaaff;
 }
 
+input:focus { 
+    background-color: #333333;
+}
+
+select:focus { 
+    background-color: #333333;
+}
+
 div.section {
     max-width: 640px;
     min-width: 360px;
