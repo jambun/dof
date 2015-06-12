@@ -37,7 +37,6 @@ DepthOfFieldCalculator.prototype.init = function() {
     var self = this;
 
     var dofinput = document.querySelectorAll("input.dofinput");
-
     for (var i = 0; i < dofinput.length; i++) {
 	dofinput[i].oninput = function() {
 	    self.calculate();
@@ -95,6 +94,18 @@ DepthOfFieldCalculator.prototype.init = function() {
 	document.getElementById("add-format").style.display = "none";
 	document.getElementById("format-param").style.display = "inline";
 	self.calculate();
+    }
+
+    var topic_label = document.querySelectorAll(".topic-label");
+    for (var i = 0; i < topic_label.length; i++) {
+	topic_label[i].onclick = function(e) {
+	    var cont = e.target.nextElementSibling;
+	    if (cont.style.display == "block") {
+		cont.style.display = "none";
+	    } else {
+		cont.style.display = "block";
+	    }
+	}
     }
 
     this.setup_keyboard_handling();

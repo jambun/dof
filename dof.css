@@ -1,6 +1,7 @@
 body {
     font-family: Helvetica, sans-serif;
     font-weight: lighter;
+    font-size: 100%;
 }
 
 div.section {
@@ -17,28 +18,16 @@ div.section {
 
 #results {
     text-align: center;
-    font-size: xx-large;
+    font-size: 2em;
 }
 
 #dof_range {
-    font-size: x-large;
+    font-size: 1em;
 }
 
 #params {
     text-align: center;
-    font-size: x-large;
-}
-
-#help {
-    font-size: large;
-}
-
-.topic-label {
-    font-size: x-large;
-}
-
-.topic-content {
-    padding-left: 60px;
+    font-size: 1.5em;
 }
 
 .topic {
@@ -50,24 +39,34 @@ div.section {
     margin-bottom: 6px;
 }
 
+.topic-label {
+    font-size: 1.25em;
+}
+
+.topic-content {
+    display: none;
+    font-size: 1em;
+    margin-left: 60px;
+}
+
 #spacer {
     height: 6px;
 }
 
 .dofinput {
-    font-size: x-large;
+    font-size: 1em;
     background: Gray;
     color: White;
 }
 
 .addinput {
-    font-size: medium;
+    font-size: 1em;
     background: Gray;
     color: White;
 }
 
 select[name=format] {
-    font-size: large;
+    font-size: 1em;
 }
 
 #hf_label {
@@ -80,16 +79,16 @@ select[name=format] {
 
 #add-format {
     display: none;
-    font-size: medium;
+    font-size: 1em;
 }
 
 select[name=denominator] {
-    font-size: small;
+    font-size: 0.9em;
     background: Gray;
     color: White;
 }
 
 #coc {
-    font-size: small;
+    font-size: 0.67em;
 }
 
