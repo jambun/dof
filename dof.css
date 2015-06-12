@@ -59,8 +59,16 @@ div.section {
     color: White;
 }
 
+.dofinput[name=distance] {
+    text-align: right;
+}
+
+.dofinput[name=focal_length] {
+    text-align: right;
+}
+
 .addinput {
-    font-size: 1em;
+    font-size: 0.8em;
     background: Gray;
     color: White;
 }
@@ -79,7 +87,7 @@ select[name=format] {
 
 #add-format {
     display: none;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 
 select[name=denominator] {
