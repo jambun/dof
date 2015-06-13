@@ -35,6 +35,30 @@ div.section {
 #results {
     text-align: center;
     font-size: 2em;
+    position: relative;
+}
+
+.touch-pad {
+    border-style: dashed;
+    border-width: 0px;
+    position: absolute;
+    top: 0px;
+    height: 100%;
+}
+
+#touch-left {
+    left: 0px;
+    width: 30%;
+}
+
+#touch-center {
+    left: 30%;
+    width: 40%;
+}
+
+#touch-right {
+    right: 0px;
+    width: 30%;
 }
 
 #dof_range {

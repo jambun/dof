@@ -33,6 +33,14 @@ function DepthOfFieldCalculator() {
 		       document.querySelector("input[name=focal_length]"),
 		       document.querySelector("select[name=format]")
 		       ];
+    this.FOCUS_INDEX = 0;
+
+    this.FOCUS_STOPS = [
+			[],
+			[this.APERTURES, this.HALF_STOP_APERTURES, this.THIRD_STOP_APERTURES],
+			[this.FOCAL_LENGTHS],
+			[]
+			];
 }
 
 DepthOfFieldCalculator.prototype.init = function() {
@@ -119,11 +127,35 @@ DepthOfFieldCalculator.prototype.init = function() {
 	}
     }
 
+    document.getElementById("touch-center").onclick = function() {
+	self.next_focus();
+    }
+
+    document.getElementById("touch-left").onclick = function() {
+	var cf = self.current_focus();
+	cf.focus();
+	var stops = self.current_stop_list();
+	if (stops.length > 0) {
+	    cf.value = self.find_under(cf.value, stops[0]);
+	    self.calculate();
+	}
+    }
+
+    document.getElementById("touch-right").onclick = function() {
+	var cf = self.current_focus();
+	cf.focus();
+	var stops = self.current_stop_list();
+	if (stops.length > 0) {
+	    cf.value = self.find_over(cf.value, stops[0]);
+	    self.calculate();
+	}
+    }
+
     this.setup_keyboard_handling();
 
     document.querySelector("select[name=format]").value = "35mm";
     this.circle_of_confusion();
-    document.querySelector("input[name=focal_length]").value = this.FOCAL_LENGTHS[7];
+    document.querySelector("input[name=focal_length]").value = this.FOCAL_LENGTHS[8];
     document.querySelector("input[name=aperture]").value = this.APERTURES[6];
     self.calculate();
 
@@ -197,20 +229,20 @@ DepthOfFieldCalculator.prototype.find_next_value = function(over, val, stops) {
 }
 
 
+DepthOfFieldCalculator.prototype.current_stop_list = function() {
+    return this.FOCUS_STOPS[this.FOCUS_INDEX];
+}
+
+DepthOfFieldCalculator.prototype.current_focus = function() {
+    return this.FOCUS_RING[this.FOCUS_INDEX];
+}
+
 DepthOfFieldCalculator.prototype.next_focus = function() {
-    var active = document.activeElement;
-    var i = 0;
-    while (i < this.FOCUS_RING.length) {
-	if (this.FOCUS_RING[i] == active) {
-	    break;
-	}
-	i++;
+    this.FOCUS_INDEX++;
+    if (this.FOCUS_INDEX >= this.FOCUS_RING.length) {
+	this.FOCUS_INDEX = 0;
     }
-    i++;
-    if (i >= this.FOCUS_RING.length) {
-	i = 0;
-    }
-    this.FOCUS_RING[i].focus();
+    this.FOCUS_RING[this.FOCUS_INDEX].focus();
 }
 
 
