@@ -35,10 +35,9 @@ function DepthOfFieldCalculator() {
     this.FOCUS_INDEX = 0;
 
     this.FOCUS_STOPS = [
-			[],
+			[10, 1, 0.1],
 			[this.APERTURES, this.HALF_STOP_APERTURES, this.THIRD_STOP_APERTURES],
-			[this.FOCAL_LENGTHS],
-			[]
+			[this.FOCAL_LENGTHS, 1, 1],
 			];
 }
 
@@ -114,6 +113,15 @@ DepthOfFieldCalculator.prototype.init = function() {
 	    help.style.display = "none";
 	} else {
 	    help.style.display = "block";
+	}
+    }
+
+    document.getElementById("touch-btn").onclick = function() {
+	var touch = document.getElementById("touch");
+	if (touch.style.display == "none") {
+	    touch.style.display = "block";
+	} else {
+	    touch.style.display = "none";
 	}
     }
 
