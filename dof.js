@@ -51,6 +51,9 @@ DepthOfFieldCalculator.prototype.init = function() {
 	dofinput[i].oninput = function() {
 	    self.calculate();
 	}
+	dofinput[i].onclick = function() {
+	    this.removeAttribute("readonly");
+	}
     }
 
     var dofselect = document.querySelector(".dofselect");
@@ -128,7 +131,7 @@ DepthOfFieldCalculator.prototype.init = function() {
     }
 
     document.getElementById("touch-center").onclick = function() {
-	self.next_focus();
+	self.next_focus(true);
     }
 
     document.getElementById("touch-left").onclick = function() {
@@ -237,10 +240,16 @@ DepthOfFieldCalculator.prototype.current_focus = function() {
     return this.FOCUS_RING[this.FOCUS_INDEX];
 }
 
-DepthOfFieldCalculator.prototype.next_focus = function() {
+DepthOfFieldCalculator.prototype.next_focus = function(readonly) {
+    
     this.FOCUS_INDEX++;
     if (this.FOCUS_INDEX >= this.FOCUS_RING.length) {
 	this.FOCUS_INDEX = 0;
+    }
+    if (readonly) {
+	this.FOCUS_RING[this.FOCUS_INDEX].setAttribute("readonly", true);
+    } else {
+	this.FOCUS_RING[this.FOCUS_INDEX].removeAttribute("readonly");
     }
     this.FOCUS_RING[this.FOCUS_INDEX].focus();
 }
