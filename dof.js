@@ -31,7 +31,6 @@ function DepthOfFieldCalculator() {
 		       document.querySelector("input[name=distance]"),
 		       document.querySelector("input[name=aperture]"),
 		       document.querySelector("input[name=focal_length]"),
-		       document.querySelector("select[name=format]")
 		       ];
     this.FOCUS_INDEX = 0;
 
