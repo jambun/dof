@@ -2,6 +2,7 @@ body {
     font-family: Helvetica, sans-serif;
     font-weight: lighter;
     font-size: 100%;
+    width: 480px;
 }
 
 a:link {
@@ -21,7 +22,7 @@ select:focus {
 }
 
 div.section {
-    max-width: 640px;
+    max-width: 480px;
     min-width: 360px;
     border-style: solid;
     border-width: 2px;
