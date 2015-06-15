@@ -111,8 +111,8 @@
 	    it operates locally and does not need a network.</p>
 	  <p>It is really just a learning exercise / proof of concept that got a bit carried away.
 	    It may well be flawed, and if it is, I'm sorry.</p>
-	  <p>It has some handy keyboard shortcuts, and the beginnings of support for touch
-	    interfaces, but it has a way to go. Maybe another day ...</p>
+	  <p>It has keyboard shortcuts for common operations, and some controls for touch
+	    interfaces.</p>
         </div>
       </div>
 
@@ -145,10 +145,19 @@
         </div>
       </div>
 
+      <div class="topic" id="touch-section">
+        <div class="topic-label">Touch Pad</div>
+        <div class="topic-content">
+	  <p>The touch pad is the third section that contains the marks '-', '&gt;' and '+'. These are
+	    touch or click controls for common operations. The touch pad will show and hide when the
+	    '&gt;' at bottom left of the parameters section is clicked or touched.</p>
+        </div>
+      </div>
+
       <div class="topic" id="navigation">
         <div class="topic-label">Navigation</div>
         <div class="topic-content">
-	  <p>Use the Return key or click in the middle part of the results section
+	  <p>Use the Return key or click in the middle part of the touch section, marked '&gt;',
 	    to cycle through the main inputs.</p>
         </div>
       </div>
@@ -158,6 +167,9 @@
         <div class="topic-content">
           <p>Distance to subject in metres. Defaults to hyperfocal distance.
           The minimum distance for which the depth of field will be calculated is twice the focal length.</p>
+	  <p>The distance will jump down and up in increments of 10m, 1m and 0.1m when the left and right
+	    parts of the touch section are clicked. The smaller increments on the parts closer to the
+	    middle.</p>
         </div>
       </div>
 
@@ -168,8 +180,9 @@
 	  <p>When the aperture input has focus, use the Up and Down arrow keys to jump in full stops.
 	  Hold down the Shift key to jump in half stops.
 	  Hold down the Alt key to jump in third stops.</p>
-	  <p>The aperture will also jump down when the left part of the results section is clicked,
-	    and up when the right part is clicked.</p>
+	  <p>The aperture will also jump down when the left part of the touch section, marked '-',
+	    is clicked, and up when the right part, marked '+', is clicked. Clicking the narrower
+	    adjacent parts will jump in half and third stops.</p>
         </div>
       </div>
 
@@ -179,8 +192,9 @@
 	  <p>Enter the focal length in millimetres in the text input after '&fnof;='.</p>
 	  <p>When the focal length input has focus, use the Up and Down arrow keys to jump
 	  in common focal lengths.</p>
-	  <p>The focal length will also jump down when the left part of the results section is clicked,
-	    and up when the right part is clicked.</p>
+	  <p>The focal length will also jump down when the left part of the touch section,
+	    marked '-', is clicked, and up when the right part, marked '+', is clicked.
+	    It will jump in 1mm increments when the narrower parts are clicked.</p>
         </div>
       </div>
 
