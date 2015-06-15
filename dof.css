@@ -92,8 +92,7 @@ div.section {
 
 .vertical-center {
     position: relative;
-    top: 25%;
-    transform: translateY(-50%);
+    top: 35px;
 }
 
 #dof_range {
