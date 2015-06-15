@@ -142,23 +142,27 @@ DepthOfFieldCalculator.prototype.init = function() {
     }
 
     document.getElementById("touch-left").onclick = function() {
-	var cf = self.current_focus();
-	cf.focus();
-	var stops = self.current_stop_list();
-	if (stops.length > 0) {
-	    cf.value = self.find_under(cf.value, stops[0]);
-	    self.calculate();
-	}
+	self.set_next_stop(false, 0);
+    }
+
+    document.getElementById("touch-left-2").onclick = function() {
+	self.set_next_stop(false, 1);
+    }
+
+    document.getElementById("touch-left-3").onclick = function() {
+	self.set_next_stop(false, 2);
     }
 
     document.getElementById("touch-right").onclick = function() {
-	var cf = self.current_focus();
-	cf.focus();
-	var stops = self.current_stop_list();
-	if (stops.length > 0) {
-	    cf.value = self.find_over(cf.value, stops[0]);
-	    self.calculate();
-	}
+	self.set_next_stop(true, 0);
+    }
+
+    document.getElementById("touch-right-2").onclick = function() {
+	self.set_next_stop(true, 1);
+    }
+
+    document.getElementById("touch-right-3").onclick = function() {
+	self.set_next_stop(true, 2);
     }
 
     this.setup_keyboard_handling();
@@ -185,6 +189,18 @@ DepthOfFieldCalculator.prototype.circle_of_confusion = function() {
 }
 
 
+DepthOfFieldCalculator.prototype.set_next_stop = function(up, offset) {
+    var cf = this.current_focus();
+    cf.focus();
+    var stops = this.current_stop_list();
+    if (stops.length == 0) {
+	return;
+    }
+    var i = Math.min(offset, stops.length-1);
+    cf.value = this.find_next_value(up, cf.value, stops[i]);
+    this.calculate();
+}
+
 DepthOfFieldCalculator.prototype.find_over = function(val, stops) {
     return this.find_next_value(true, val, stops);
 }
@@ -196,6 +212,13 @@ DepthOfFieldCalculator.prototype.find_under = function(val, stops) {
 
 
 DepthOfFieldCalculator.prototype.find_next_value = function(over, val, stops) {
+    if (!Array.isArray(stops)) {
+	if (over) {
+	    return Math.trunc((Number(val) + stops) / stops) * stops;
+	} else {
+	    return Math.trunc((Number(val) - stops/10) / stops) * stops;
+	}
+    }
     var i = Number(stops.length/2).toFixed(0);
     var vn = Number(val);
     var going_up = stops[i] < val;
