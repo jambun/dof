@@ -37,7 +37,7 @@ function DepthOfFieldCalculator() {
     this.FOCUS_STOPS = [
 			[10, 1, 0.1],
 			[this.APERTURES, this.HALF_STOP_APERTURES, this.THIRD_STOP_APERTURES],
-			[this.FOCAL_LENGTHS, 1, 1],
+			[this.FOCAL_LENGTHS, 1, 0.1],
 			];
 }
 
