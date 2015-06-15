@@ -231,10 +231,10 @@ DepthOfFieldCalculator.prototype.find_next_value = function(over, val, stops) {
 	    if (dp > 0) {
 		return Number((valx + stopx) / xer).toFixed(dp);
 	    } else {
-		return Number(Math.trunc((Number(val) + stops) / stops) * stops).toFixed(dp);
+		return Number(Math.floor((Number(val) + stops) / stops) * stops).toFixed(dp);
 	    }
 	} else {
-	    return Number(Math.trunc((Number(val) - stops/10) / stops) * stops).toFixed(dp);
+	    return Number(Math.floor((Number(val) - stops/10) / stops) * stops).toFixed(dp);
 	}
     }
     var i = Number(stops.length/2).toFixed(0);
