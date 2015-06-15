@@ -46,6 +46,7 @@ DepthOfFieldCalculator.prototype.init = function() {
 
     var dofinput = document.querySelectorAll("input.dofinput");
     for (var i = 0; i < dofinput.length; i++) {
+	dofinput[i].setAttribute("readonly", true);
 	dofinput[i].oninput = function() {
 	    self.calculate();
 	}
