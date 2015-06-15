@@ -51,6 +51,13 @@ DepthOfFieldCalculator.prototype.init = function() {
 	}
 	dofinput[i].onclick = function() {
 	    this.removeAttribute("readonly");
+
+	    for (j = 0; j < self.FOCUS_RING.length; j++) {
+		if (this === self.FOCUS_RING[j]) {
+		    self.FOCUS_INDEX = j;
+		    break;
+		}
+	    }
 	}
     }
 
