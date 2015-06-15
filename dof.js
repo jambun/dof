@@ -213,10 +213,21 @@ DepthOfFieldCalculator.prototype.find_under = function(val, stops) {
 
 DepthOfFieldCalculator.prototype.find_next_value = function(over, val, stops) {
     if (!Array.isArray(stops)) {
+	// this nonsense because of floating math mess - sheesh
+	var nval = Number(val);
+	var parts = stops.toString().split('.');
+	var dp = (parts.length < 2) ? 0 : parts[1].length;
+	var xer = Math.pow(10, dp);
+	var valx = Math.round(nval * xer);
+	var stopx = Math.round(stops * xer);
 	if (over) {
-	    return Math.trunc((Number(val) + stops) / stops) * stops;
+	    if (dp > 0) {
+		return Number((valx + stopx) / xer).toFixed(dp);
+	    } else {
+		return Number(Math.trunc((Number(val) + stops) / stops) * stops).toFixed(dp);
+	    }
 	} else {
-	    return Math.trunc((Number(val) - stops/10) / stops) * stops;
+	    return Number(Math.trunc((Number(val) - stops/10) / stops) * stops).toFixed(dp);
 	}
     }
     var i = Number(stops.length/2).toFixed(0);
