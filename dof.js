@@ -16,6 +16,8 @@ function DepthOfFieldCalculator() {
 	"8x10": [203, 254]
     };
 
+    this.COOKIE = {"formats": {}};
+
     this.FOCAL_LENGTHS = [11, 15, 20, 21, 24, 28, 35, 40, 50, 55, 75, 85, 90, 100, 105,
 			  135, 150, 180, 200, 210, 240, 250, 270, 350, 400, 450, 600, 720,
 			  1000, 1200, 1700, 2000];
@@ -41,8 +43,16 @@ function DepthOfFieldCalculator() {
 			];
 }
 
+
 DepthOfFieldCalculator.prototype.init = function() {
     var self = this;
+
+    self.read_cookie();
+
+    for (var k in self.COOKIE['formats']) {
+	let f = self.COOKIE['formats'][k];
+	self.add_format(k, f[0], f[1]);
+    }
 
     var dofinput = document.querySelectorAll("input.dofinput");
     for (var i = 0; i < dofinput.length; i++) {
@@ -96,11 +106,10 @@ DepthOfFieldCalculator.prototype.init = function() {
 	    return;
 	}
 
-	self.FORMATS[fmtname] = [dim1, dim2];
+	self.COOKIE["formats"][fmtname] = [dim1, dim2];
+	self.write_cookie();
 
-	var opt = document.createElement("option");
-	opt.text = document.querySelector("input.addinput[name=name]").value;
-	dofselect.add(opt);
+	self.add_format(fmtname, dim1, dim2);
 
 	dofselect.selectedIndex = dofselect.options.length - 1;
 	document.getElementById("add-format").style.display = "none";
@@ -187,6 +196,38 @@ DepthOfFieldCalculator.prototype.init = function() {
 
     document.querySelector("input[name=distance]").value = "";
     document.querySelector("input[name=distance]").focus();
+}
+
+
+DepthOfFieldCalculator.prototype.add_format = function(fmtname, dim1, dim2) {
+    let dofselect = document.querySelector(".dofselect");
+    this.FORMATS[fmtname] = [dim1, dim2];
+
+    if (!dofselect.classList.contains("format_added")) {
+	let divider = document.createElement("option");
+	divider.text = '---';
+	divider.disabled = true;
+	dofselect.add(divider);
+    }
+    let opt = document.createElement("option");
+    opt.value = fmtname;
+    opt.text = fmtname + '  (' + dim1 + 'x' + dim2 + ')';
+    dofselect.add(opt);
+    dofselect.classList.add("format_added");
+}
+
+
+DepthOfFieldCalculator.prototype.write_cookie = function() {
+    document.cookie = "data=" + btoa(JSON.stringify(this.COOKIE)) + ";";
+}
+
+
+DepthOfFieldCalculator.prototype.read_cookie = function() {
+    let cookie = document.cookie;
+    cookie = cookie.replace(/data=(.*);?$/, "$1");
+    if (cookie) {
+	this.COOKIE = JSON.parse(atob(cookie));
+    }
 }
 
 
@@ -407,5 +448,6 @@ DepthOfFieldCalculator.prototype.calculate = function() {
 function init() {
     new DepthOfFieldCalculator().init();
 }
+
 
 window.onload = init;
