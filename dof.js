@@ -105,6 +105,8 @@ DepthOfFieldCalculator.prototype.init = function() {
 	dofselect.selectedIndex = dofselect.options.length - 1;
 	document.getElementById("add-format").style.display = "none";
 	document.getElementById("format-param").style.display = "inline";
+
+	self.circle_of_confusion();
 	self.calculate();
     }
 
@@ -112,6 +114,8 @@ DepthOfFieldCalculator.prototype.init = function() {
 	dofselect.value = "35mm";
 	document.getElementById("add-format").style.display = "none";
 	document.getElementById("format-param").style.display = "inline";
+
+	self.circle_of_confusion();
 	self.calculate();
     }
 
